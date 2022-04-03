@@ -1,11 +1,11 @@
 # Useful links
-
-https://packages.confluent.io/maven/io/confluent/kafka-schema-registry-client/7.0.1/
-https://github.com/confluentinc/examples/tree/7.0.2-post/clients/avro/src/main/resources/avro/io/confluent/examples/clients/basicavro
-https://docs.confluent.io/platform/current/schema-registry/schema_registry_onprem_tutorial.html#schema-registry-onprem-tutorial
-https://github.com/confluentinc/springboot-kafka-avro/blob/master/src/main/java/io/confluent/developer/spring/avro/Producer.java
+- https://packages.confluent.io/maven/io/confluent/kafka-schema-registry-client/7.0.1/
+- https://github.com/confluentinc/examples/tree/7.0.2-post/clients/avro/src/main/resources/avro/io/confluent/examples/clients/basicavro
+- https://docs.confluent.io/platform/current/schema-registry/schema_registry_onprem_tutorial.html#schema-registry-onprem-tutorial
+- https://github.com/confluentinc/springboot-kafka-avro/blob/master/src/main/java/io/confluent/developer/spring/avro/Producer.java
 
 # Debug logs
+``` Bash
 2022-04-03 22:42:54.916  INFO 175592 --- [nio-8080-exec-4] a.k.s.enrolment.EnrolmentController      : Received POST request to create enrolment
 2022-04-03 22:42:54.916  INFO 175592 --- [nio-8080-exec-4] a.k.s.enrolment.EnrolmentProducer        : Produced enrolment -> {"header": {"eventName": "CreateEnrolmentEvent"}, "payload": {"entityId": 1000, "rewardName": "MindfulChef", "rewardMembershipId": "MC1234"}}
 2022-04-03 22:42:54.917 DEBUG 175592 --- [nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
@@ -33,8 +33,107 @@ https://github.com/confluentinc/springboot-kafka-avro/blob/master/src/main/java/
 2022-04-03 22:44:19.342 DEBUG 175592 --- [nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
 ^C2022-04-03 22:44:35.832 DEBUG 175592 --- [ionShutdownHook] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
 2022-04-03 22:44:35.832 DEBUG 175592 --- [ionShutdownHook] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@624ea3ad, started on Sun Apr 03 22:42:38 UTC 2022
+```
+# Created Schemas
+```JSON
+{
+    "namespace": "app.kafka.schemaapp.schema",
+    "type": "record",
+    "name": "MessageHeader",
+    "fields": [
+        {
+            "name": "eventName",
+            "type": {
+                "type": "enum",
+                "name": "EventName",
+                "symbols": [
+                    "CreateEnrolmentEvent",
+                    "CancelEnrolmentEvent"
+                ]
+            }
+        }
+    ]
+}
+```
+```JSON
+{
+    "namespace": "app.kafka.schemaapp.schema",
+    "type": "record",
+    "name": "CreateEnrolment",
+    "fields": [
+        {
+            "name": "entityId",
+            "type": "int"
+        },
+        {
+            "name": "rewardName",
+            "type": "string"
+        },
+        {
+            "name": "rewardMembershipId",
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    ]
+}
+```
+```JSON
+{
+    "namespace": "app.kafka.schemaapp.schema",
+    "type": "record",
+    "name": "CancelEnrolment",
+    "fields": [
+        {
+            "name": "entityId",
+            "type": "int"
+        },
+        {
+            "name": "rewardName",
+            "type": "string"
+        },
+        {
+            "name": "reasonCode",
+            "type": [
+                "null",
+                {
+                    "type": "enum",
+                    "name": "ReasonCode",
+                    "symbols": [
+                        "MemberRequested",
+                        "PolicyCancelled",
+                        "PartnerMembershipCancelled"
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+```JSON
+{
+    "namespace": "app.kafka.schemaapp.schema",
+    "type": "record",
+    "name": "BaselineEventStructure",
+    "fields": [
+        {
+            "name": "header",
+            "type": "app.kafka.schemaapp.schema.MessageHeader"
+        },
+        {
+            "name": "payload",
+            "type": [
+                "app.kafka.schemaapp.schema.CreateEnrolment",
+                "app.kafka.schemaapp.schema.CancelEnrolment"
+            ]
+        }
+    ]
+}
+```
 
-# Registered schema
+# Registered schema in Confluent Schema Registry
+```JSON
 {
   "fields": [
     {
@@ -126,3 +225,61 @@ https://github.com/confluentinc/springboot-kafka-avro/blob/master/src/main/java/
   "namespace": "app.kafka.schemaapp.schema",
   "type": "record"
 }
+```
+
+# Data as seen in the Control Centre
+```JSON
+{
+  "header": {
+    "eventName": "CreateEnrolmentEvent"
+  },
+  "payload": {
+    "app.kafka.schemaapp.schema.CreateEnrolment": {
+      "entityId": 1000,
+      "rewardName": "MindfulChef",
+      "rewardMembershipId": {
+        "string": "MC1234"
+      }
+    }
+  }
+}
+
+{
+  "header": {
+    "eventName": "CancelEnrolmentEvent"
+  },
+  "payload": {
+    "app.kafka.schemaapp.schema.CancelEnrolment": {
+      "entityId": 1000,
+      "rewardName": "MindfulChef",
+      "reasonCode": {
+        "app.kafka.schemaapp.schema.ReasonCode": "MemberRequested"
+      }
+    }
+  }
+}
+```
+# Data via application logs
+```JSON
+{
+   "header":{
+      "eventName":"CreateEnrolmentEvent"
+   },
+   "payload":{
+      "entityId":1000,
+      "rewardName":"MindfulChef",
+      "rewardMembershipId":"MC1234"
+   }
+}
+
+{
+   "header":{
+      "eventName":"CancelEnrolmentEvent"
+   },
+   "payload":{
+      "entityId":1000,
+      "rewardName":"MindfulChef",
+      "reasonCode":"MemberRequested"
+   }
+}
+```
