@@ -1,0 +1,18 @@
+{
+    "namespace": "app.kafka.schemaapp.schema",
+    "type": "record",
+    "name": "MessageHeader",
+    "fields": [
+        {
+            "name": "eventName",
+            "type": {
+                "type": "enum",
+                "name": "EventName",
+                "symbols": [
+                    "CreateEnrolmentEvent",
+                    "CancelEnrolmentEvent"
+                ]
+            }
+        }
+    ]
+}

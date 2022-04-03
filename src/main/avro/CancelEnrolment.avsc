@@ -1,0 +1,30 @@
+{
+    "namespace": "app.kafka.schemaapp.schema",
+    "type": "record",
+    "name": "CancelEnrolment",
+    "fields": [
+        {
+            "name": "entityId",
+            "type": "int"
+        },
+        {
+            "name": "rewardName",
+            "type": "string"
+        },
+        {
+            "name": "reasonCode",
+            "type": [
+                "null",
+                {
+                    "type": "enum",
+                    "name": "ReasonCode",
+                    "symbols": [
+                        "MemberRequested",
+                        "PolicyCancelled",
+                        "PartnerMembershipCancelled"
+                    ]
+                }
+            ]
+        }
+    ]
+}

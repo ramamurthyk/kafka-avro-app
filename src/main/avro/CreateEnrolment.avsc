@@ -1,0 +1,22 @@
+{
+    "namespace": "app.kafka.schemaapp.schema",
+    "type": "record",
+    "name": "CreateEnrolment",
+    "fields": [
+        {
+            "name": "entityId",
+            "type": "int"
+        },
+        {
+            "name": "rewardName",
+            "type": "string"
+        },
+        {
+            "name": "rewardMembershipId",
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    ]
+}

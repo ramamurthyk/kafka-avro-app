@@ -1,0 +1,18 @@
+{
+    "namespace": "app.kafka.schemaapp.schema",
+    "type": "record",
+    "name": "BaselineEventStructure",
+    "fields": [
+        {
+            "name": "header",
+            "type": "app.kafka.schemaapp.schema.MessageHeader"
+        },
+        {
+            "name": "payload",
+            "type": [
+                "app.kafka.schemaapp.schema.CreateEnrolment",
+                "app.kafka.schemaapp.schema.CancelEnrolment"
+            ]
+        }
+    ]
+}
