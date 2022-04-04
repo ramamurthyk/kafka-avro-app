@@ -1,0 +1,19 @@
+{
+    "namespace": "app.kafka.schemaapp.schema",
+    "type": "record",
+    "name": "UpdateEnrolment",
+    "fields": [      
+        {
+            "name": "rewardName",
+            "type": "string"
+        },  
+        {
+            "name": "rewardMembershipId",
+            "type": "string"
+        },
+        {
+            "name": "rewardMembershipEmail",
+            "type": ["null", "string"]
+        }
+    ]
+}

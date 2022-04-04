@@ -10,7 +10,8 @@
                 "name": "EventName",
                 "symbols": [
                     "CreateEnrolmentEvent",
-                    "CancelEnrolmentEvent"
+                    "CancelEnrolmentEvent",
+                    "UpdateEnrolment"
                 ]
             }
         }
