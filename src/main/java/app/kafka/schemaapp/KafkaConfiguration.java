@@ -6,10 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Configuration
-@Slf4j
 @EnableKafka
 public class KafkaConfiguration {
     @Autowired

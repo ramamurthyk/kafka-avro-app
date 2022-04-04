@@ -11,48 +11,48 @@ import org.springframework.stereotype.Service;
 
 import app.kafka.schemaapp.SchemaApplicationProperties;
 import app.kafka.schemaapp.schema.BaselineEventStructure;
-import app.kafka.schemaapp.schema.CreateEnrolment;
+import app.kafka.schemaapp.schema.CancelEnrolment;
 import app.kafka.schemaapp.schema.EventName;
 import app.kafka.schemaapp.schema.MessageHeader;
+import app.kafka.schemaapp.schema.ReasonCode;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class EnrolmentProducer {
+public class CancelEnrolmentProducer {
     @Autowired
     private KafkaTemplate<String, BaselineEventStructure> template;
 
     @Autowired
     private SchemaApplicationProperties properties;
 
-    public void sendCreateMessage(EnrolmentRequest request) {
+    public void sendCancelMessage(CancelEnrolmentRequest request) {
         // Build message.
         MessageHeader header = MessageHeader.newBuilder()
-                .setEventName(EventName.CreateEnrolmentEvent)
+                .setEventName(EventName.CancelEnrolmentEvent)
                 .build();
 
-        CreateEnrolment createEnrolment = CreateEnrolment.newBuilder()
+        CancelEnrolment cancelEnrolment = CancelEnrolment.newBuilder()
                 .setEntityId(request.entityId())
                 .setRewardName(request.rewardName())
-                .setRewardMembershipId(request.rewardMembershipId())
+                .setReasonCode(ReasonCode.MemberRequested)
                 .build();
 
-        BaselineEventStructure createEnrolmentRequest = BaselineEventStructure.newBuilder()
+        BaselineEventStructure cancelEnrolmentRequest = BaselineEventStructure.newBuilder()
                 .setHeader(header)
-                .setPayload(createEnrolment)
+                .setPayload(cancelEnrolment)
                 .build();
 
         ProducerRecord<String, BaselineEventStructure> record = new ProducerRecord<String, BaselineEventStructure>(
-                properties.enrolmentRequestTopic, null, Integer.toString(request.entityId()), createEnrolmentRequest);
+                properties.enrolmentRequestTopic, null, Integer.toString(request.entityId()), cancelEnrolmentRequest);
 
         // Add headers.
         record.headers()
                 .add(new RecordHeader(KafkaHeaders.CORRELATION_ID, UUID.randomUUID().toString().getBytes()));
-        record.headers().add(new RecordHeader("X_messageType", EventName.CreateEnrolmentEvent.toString().getBytes()));
+        record.headers().add(new RecordHeader("X_messageType", EventName.CancelEnrolmentEvent.toString().getBytes()));
 
         this.template.send(record);
 
-        log.info(String.format("Produced EnrolmentRequest -> %s", record));
+        log.info(String.format("Produced CancelEnrolmentRequest -> %s", record));
     }
-
 }
