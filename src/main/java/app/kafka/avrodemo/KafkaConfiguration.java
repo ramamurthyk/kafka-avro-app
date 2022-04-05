@@ -10,7 +10,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 @EnableKafka
 public class KafkaConfiguration {
     @Autowired
-    private SchemaApplicationProperties properties;
+    private ApplicationProperties properties;
 
     // Topic creation.
     @Bean

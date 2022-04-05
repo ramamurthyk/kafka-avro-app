@@ -11,23 +11,23 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @Slf4j
 public class EnrolmentController {
-	@Autowired
-	private EnrolmentProducer enrolmentProducer;
+    @Autowired
+    private EnrolmentProducer enrolmentProducer;
 
-	@Autowired
-	private CancelEnrolmentProducer cancelEnrolmentProducer;
+    @Autowired
+    private CancelEnrolmentProducer cancelEnrolmentProducer;
 
-	@PostMapping(path = "/api/enrolments")
-	public void CreateEnrolment(@RequestBody CreateEnrolmentRequest request) {
-		log.info("Received POST request to create enrolment");
+    @PostMapping(path = "/api/enrolments")
+    public void CreateEnrolment(@RequestBody CreateEnrolmentRequest request) {
+        log.info("Received POST request to create enrolment");
 
-		enrolmentProducer.sendCreateMessage(request);
-	}
+        enrolmentProducer.sendCreateMessage(request);
+    }
 
-	@PatchMapping(path = "/api/enrolments")
-	public void CancelEnrolment(@RequestBody CancelEnrolmentRequest request) {
-		log.info("Received PATCH request to cancel enrolment");
+    @PatchMapping(path = "/api/enrolments")
+    public void CancelEnrolment(@RequestBody CancelEnrolmentRequest request) {
+        log.info("Received PATCH request to cancel enrolment");
 
-		cancelEnrolmentProducer.sendCancelMessage(request);
-	}
+        cancelEnrolmentProducer.sendCancelMessage(request);
+    }
 }

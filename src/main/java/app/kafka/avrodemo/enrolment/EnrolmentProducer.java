@@ -9,7 +9,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.stereotype.Service;
 
-import app.kafka.avrodemo.SchemaApplicationProperties;
+import app.kafka.avrodemo.ApplicationProperties;
 import app.kafka.avrodemo.schema.EnrolmentRequest;
 import app.kafka.avrodemo.schema.CreateEnrolment;
 import app.kafka.avrodemo.schema.EventName;
@@ -23,35 +23,24 @@ public class EnrolmentProducer {
     private KafkaTemplate<String, EnrolmentRequest> template;
 
     @Autowired
-    private SchemaApplicationProperties properties;
+    private ApplicationProperties properties;
 
     public void sendCreateMessage(CreateEnrolmentRequest request) {
         // Build message.
-        MessageHeader header = MessageHeader.newBuilder()
-                .setEventName(EventName.CreateEnrolment)
-                .build();
+        MessageHeader header = MessageHeader.newBuilder().setEventName(EventName.CreateEnrolment).build();
 
-        CreateEnrolment createEnrolment = CreateEnrolment.newBuilder()
-                .setEntityId(request.entityId())
-                .setRewardName(request.rewardName())
-                .setRewardMembershipId(request.rewardMembershipId())
-                .build();
+        CreateEnrolment createEnrolment = CreateEnrolment.newBuilder().setEntityId(request.entityId())
+                .setRewardName(request.rewardName()).setRewardMembershipId(request.rewardMembershipId()).build();
 
-        EnrolmentRequest createEnrolmentRequest = EnrolmentRequest.newBuilder()
-                .setHeader(header)
-                .setPayload(createEnrolment)
-                .build();
+        EnrolmentRequest createEnrolmentRequest = EnrolmentRequest.newBuilder().setHeader(header)
+                .setPayload(createEnrolment).build();
 
         ProducerRecord<String, EnrolmentRequest> record = new ProducerRecord<String, EnrolmentRequest>(
-                properties.enrolmentRequestTopic, null, Integer.toString(request.entityId()),
-                createEnrolmentRequest);
+                properties.enrolmentRequestTopic, null, Integer.toString(request.entityId()), createEnrolmentRequest);
 
         // Add headers.
-        record.headers()
-                .add(new RecordHeader(KafkaHeaders.CORRELATION_ID,
-                        UUID.randomUUID().toString().getBytes()));
-        record.headers().add(new RecordHeader("X_messageType",
-                EventName.CreateEnrolment.toString().getBytes()));
+        record.headers().add(new RecordHeader(KafkaHeaders.CORRELATION_ID, UUID.randomUUID().toString().getBytes()));
+        record.headers().add(new RecordHeader("X_messageType", EventName.CreateEnrolment.toString().getBytes()));
 
         this.template.send(record);
 

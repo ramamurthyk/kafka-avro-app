@@ -17,8 +17,7 @@ public class EnrolmentConsumer {
     public void listen(ConsumerRecord<String, EnrolmentRequest> record) {
         record.headers().forEach(header -> log.info(String.format("Received header: key: %s, value: %s", header.key(),
                 new String(header.value(), StandardCharsets.UTF_8))));
-        log.info(String.format("Received key: %s. value: %s", record.key(),
-                record.value()));
+        log.info(String.format("Received key: %s. value: %s", record.key(), record.value()));
 
         String messageType = new String(record.headers().lastHeader("X_messageType").value(), StandardCharsets.UTF_8);
         EventName eventType = EventName.valueOf(messageType);

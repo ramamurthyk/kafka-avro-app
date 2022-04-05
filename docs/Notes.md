@@ -3,6 +3,11 @@
 - https://github.com/confluentinc/examples/tree/7.0.2-post/clients/avro/src/main/resources/avro/io/confluent/examples/clients/basicavro
 - https://docs.confluent.io/platform/current/schema-registry/schema_registry_onprem_tutorial.html#schema-registry-onprem-tutorial
 - https://github.com/confluentinc/springboot-kafka-avro/blob/master/src/main/java/io/confluent/developer/spring/avro/Producer.java
+- https://docs.confluent.io/platform/current/schema-registry/develop/maven-plugin.html
+- https://docs.confluent.io/platform/current/schema-registry/schema_registry_onprem_tutorial.html
+- https://mvallim.github.io/spring-schema-registry/
+- https://www.confluent.io/blog/multiple-event-types-in-the-same-kafka-topic/
+- https://code.visualstudio.com/docs/java/java-linting
 
 # Debug logs
 ``` Bash
