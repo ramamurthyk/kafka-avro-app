@@ -4,10 +4,11 @@
 Demonstrates usage of Confluent Schema Registry to provide strongly typed events/messages using Avro format to integrate with Kafka.
 
 ## Tech Stack
+- Java 17
 - Spring Boot Microservice
-- Kafka
+- Apache Kafka
 - Confluent Schema Registry
-- Uses Avro
+- Apache Avro Data Serialization
 
 ## Details
-Refer [Schema Registry](/docs/SchemaRegistry.md) for details.
+Refer [Schema Registry Integration](/docs/SchemaRegistry.md) for details.
