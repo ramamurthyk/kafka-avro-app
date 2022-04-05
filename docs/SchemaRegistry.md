@@ -1,4 +1,4 @@
-# Confluent Schema Registry integration
+# Confluent Schema Registry Integration
 
 ## Avro Schemas
 MessageHeader.avsc
