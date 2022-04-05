@@ -1,4 +1,4 @@
-package app.kafka.schemaapp.common;
+package app.kafka.avrodemo.common;
 
 import java.nio.ByteBuffer;
 import java.util.UUID;

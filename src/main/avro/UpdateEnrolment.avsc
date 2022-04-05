@@ -1,12 +1,12 @@
 {
-    "namespace": "app.kafka.schemaapp.schema",
+    "namespace": "app.kafka.avrodemo.schema",
     "type": "record",
     "name": "UpdateEnrolment",
     "fields": [      
         {
             "name": "rewardName",
             "type": "string"
-        },  
+        },
         {
             "name": "rewardMembershipId",
             "type": "string"

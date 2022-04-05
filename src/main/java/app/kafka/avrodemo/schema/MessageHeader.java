@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package app.kafka.schemaapp.schema;
+package app.kafka.avrodemo.schema;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 6366542530731485891L;
+  private static final long serialVersionUID = 7483864064799513061L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MessageHeader\",\"namespace\":\"app.kafka.schemaapp.schema\",\"fields\":[{\"name\":\"eventName\",\"type\":{\"type\":\"enum\",\"name\":\"EventName\",\"symbols\":[\"CreateEnrolmentEvent\",\"CancelEnrolmentEvent\",\"UpdateEnrolment\"]}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MessageHeader\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"eventName\",\"type\":{\"type\":\"enum\",\"name\":\"EventName\",\"symbols\":[\"CreateEnrolmentEvent\",\"CancelEnrolmentEvent\",\"UpdateEnrolment\"]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -73,7 +73,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
     return DECODER.decode(b);
   }
 
-  private app.kafka.schemaapp.schema.EventName eventName;
+  private app.kafka.avrodemo.schema.EventName eventName;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -86,7 +86,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
    * All-args constructor.
    * @param eventName The new value for eventName
    */
-  public MessageHeader(app.kafka.schemaapp.schema.EventName eventName) {
+  public MessageHeader(app.kafka.avrodemo.schema.EventName eventName) {
     this.eventName = eventName;
   }
 
@@ -104,7 +104,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: eventName = (app.kafka.schemaapp.schema.EventName)value$; break;
+    case 0: eventName = (app.kafka.avrodemo.schema.EventName)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -113,7 +113,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
    * Gets the value of the 'eventName' field.
    * @return The value of the 'eventName' field.
    */
-  public app.kafka.schemaapp.schema.EventName getEventName() {
+  public app.kafka.avrodemo.schema.EventName getEventName() {
     return eventName;
   }
 
@@ -122,7 +122,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
    * Sets the value of the 'eventName' field.
    * @param value the value to set.
    */
-  public void setEventName(app.kafka.schemaapp.schema.EventName value) {
+  public void setEventName(app.kafka.avrodemo.schema.EventName value) {
     this.eventName = value;
   }
 
@@ -130,8 +130,8 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
    * Creates a new MessageHeader RecordBuilder.
    * @return A new MessageHeader RecordBuilder
    */
-  public static app.kafka.schemaapp.schema.MessageHeader.Builder newBuilder() {
-    return new app.kafka.schemaapp.schema.MessageHeader.Builder();
+  public static app.kafka.avrodemo.schema.MessageHeader.Builder newBuilder() {
+    return new app.kafka.avrodemo.schema.MessageHeader.Builder();
   }
 
   /**
@@ -139,11 +139,11 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
    * @param other The existing builder to copy.
    * @return A new MessageHeader RecordBuilder
    */
-  public static app.kafka.schemaapp.schema.MessageHeader.Builder newBuilder(app.kafka.schemaapp.schema.MessageHeader.Builder other) {
+  public static app.kafka.avrodemo.schema.MessageHeader.Builder newBuilder(app.kafka.avrodemo.schema.MessageHeader.Builder other) {
     if (other == null) {
-      return new app.kafka.schemaapp.schema.MessageHeader.Builder();
+      return new app.kafka.avrodemo.schema.MessageHeader.Builder();
     } else {
-      return new app.kafka.schemaapp.schema.MessageHeader.Builder(other);
+      return new app.kafka.avrodemo.schema.MessageHeader.Builder(other);
     }
   }
 
@@ -152,11 +152,11 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
    * @param other The existing instance to copy.
    * @return A new MessageHeader RecordBuilder
    */
-  public static app.kafka.schemaapp.schema.MessageHeader.Builder newBuilder(app.kafka.schemaapp.schema.MessageHeader other) {
+  public static app.kafka.avrodemo.schema.MessageHeader.Builder newBuilder(app.kafka.avrodemo.schema.MessageHeader other) {
     if (other == null) {
-      return new app.kafka.schemaapp.schema.MessageHeader.Builder();
+      return new app.kafka.avrodemo.schema.MessageHeader.Builder();
     } else {
-      return new app.kafka.schemaapp.schema.MessageHeader.Builder(other);
+      return new app.kafka.avrodemo.schema.MessageHeader.Builder(other);
     }
   }
 
@@ -167,7 +167,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<MessageHeader>
     implements org.apache.avro.data.RecordBuilder<MessageHeader> {
 
-    private app.kafka.schemaapp.schema.EventName eventName;
+    private app.kafka.avrodemo.schema.EventName eventName;
 
     /** Creates a new Builder */
     private Builder() {
@@ -178,7 +178,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(app.kafka.schemaapp.schema.MessageHeader.Builder other) {
+    private Builder(app.kafka.avrodemo.schema.MessageHeader.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.eventName)) {
         this.eventName = data().deepCopy(fields()[0].schema(), other.eventName);
@@ -190,7 +190,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
      * Creates a Builder by copying an existing MessageHeader instance
      * @param other The existing instance to copy.
      */
-    private Builder(app.kafka.schemaapp.schema.MessageHeader other) {
+    private Builder(app.kafka.avrodemo.schema.MessageHeader other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.eventName)) {
         this.eventName = data().deepCopy(fields()[0].schema(), other.eventName);
@@ -202,7 +202,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
       * Gets the value of the 'eventName' field.
       * @return The value.
       */
-    public app.kafka.schemaapp.schema.EventName getEventName() {
+    public app.kafka.avrodemo.schema.EventName getEventName() {
       return eventName;
     }
 
@@ -212,7 +212,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'eventName'.
       * @return This builder.
       */
-    public app.kafka.schemaapp.schema.MessageHeader.Builder setEventName(app.kafka.schemaapp.schema.EventName value) {
+    public app.kafka.avrodemo.schema.MessageHeader.Builder setEventName(app.kafka.avrodemo.schema.EventName value) {
       validate(fields()[0], value);
       this.eventName = value;
       fieldSetFlags()[0] = true;
@@ -232,7 +232,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
       * Clears the value of the 'eventName' field.
       * @return This builder.
       */
-    public app.kafka.schemaapp.schema.MessageHeader.Builder clearEventName() {
+    public app.kafka.avrodemo.schema.MessageHeader.Builder clearEventName() {
       eventName = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -243,7 +243,7 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
     public MessageHeader build() {
       try {
         MessageHeader record = new MessageHeader();
-        record.eventName = fieldSetFlags()[0] ? this.eventName : (app.kafka.schemaapp.schema.EventName) defaultValue(fields()[0]);
+        record.eventName = fieldSetFlags()[0] ? this.eventName : (app.kafka.avrodemo.schema.EventName) defaultValue(fields()[0]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -285,13 +285,13 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.eventName = app.kafka.schemaapp.schema.EventName.values()[in.readEnum()];
+      this.eventName = app.kafka.avrodemo.schema.EventName.values()[in.readEnum()];
 
     } else {
       for (int i = 0; i < 1; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.eventName = app.kafka.schemaapp.schema.EventName.values()[in.readEnum()];
+          this.eventName = app.kafka.avrodemo.schema.EventName.values()[in.readEnum()];
           break;
 
         default:

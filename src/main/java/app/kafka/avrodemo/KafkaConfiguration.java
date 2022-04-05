@@ -1,4 +1,4 @@
-package app.kafka.schemaapp;
+package app.kafka.avrodemo;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;

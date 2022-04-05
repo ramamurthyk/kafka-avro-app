@@ -1,5 +1,5 @@
 {
-    "namespace": "app.kafka.schemaapp.schema",
+    "namespace": "app.kafka.avrodemo.schema",
     "type": "record",
     "name": "CreateEnrolment",
     "fields": [

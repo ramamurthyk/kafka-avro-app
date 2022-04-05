@@ -3,11 +3,11 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package app.kafka.schemaapp.schema;
+package app.kafka.avrodemo.schema;
 @org.apache.avro.specific.AvroGenerated
 public enum ReasonCode implements org.apache.avro.generic.GenericEnumSymbol<ReasonCode> {
   MemberRequested, PolicyCancelled, PartnerMembershipCancelled  ;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"ReasonCode\",\"namespace\":\"app.kafka.schemaapp.schema\",\"symbols\":[\"MemberRequested\",\"PolicyCancelled\",\"PartnerMembershipCancelled\"]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"ReasonCode\",\"namespace\":\"app.kafka.avrodemo.schema\",\"symbols\":[\"MemberRequested\",\"PolicyCancelled\",\"PartnerMembershipCancelled\"]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
 }

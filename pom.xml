@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>app.kafka</groupId>
-	<artifactId>schemaapp</artifactId>
+	<artifactId>avrodemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>schemaapp</name>
-	<description>Demo project for Spring Boot</description>
+	<name>avrodemo</name>
+	<description>Demo project for Spring Boot Kafka app using Avro schema and schema registry.</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

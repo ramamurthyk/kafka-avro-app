@@ -1,4 +1,4 @@
-package app.kafka.schemaapp.enrolment;
+package app.kafka.avrodemo.enrolment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PatchMapping;

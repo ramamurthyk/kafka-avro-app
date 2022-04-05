@@ -1,4 +1,4 @@
-package app.kafka.schemaapp;
+package app.kafka.avrodemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

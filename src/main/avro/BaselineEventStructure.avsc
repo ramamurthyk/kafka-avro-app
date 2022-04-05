@@ -1,18 +1,18 @@
 {
-    "namespace": "app.kafka.schemaapp.schema",
+    "namespace": "app.kafka.avrodemo.schema",
     "type": "record",
     "name": "BaselineEventStructure",
     "fields": [
         {
             "name": "header",
-            "type": "app.kafka.schemaapp.schema.MessageHeader"
+            "type": "app.kafka.avrodemo.schema.MessageHeader"
         },
         {
             "name": "payload",
             "type": [
-                "app.kafka.schemaapp.schema.CreateEnrolment",
-                "app.kafka.schemaapp.schema.CancelEnrolment",
-                "app.kafka.schemaapp.schema.UpdateEnrolment"
+                "app.kafka.avrodemo.schema.CreateEnrolment",
+                "app.kafka.avrodemo.schema.CancelEnrolment",
+                "app.kafka.avrodemo.schema.UpdateEnrolment"
             ]
         }
     ]

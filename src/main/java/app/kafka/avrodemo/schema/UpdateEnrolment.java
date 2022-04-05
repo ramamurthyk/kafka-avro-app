@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package app.kafka.schemaapp.schema;
+package app.kafka.avrodemo.schema;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8064218412975014693L;
+  private static final long serialVersionUID = -5480270119156179033L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UpdateEnrolment\",\"namespace\":\"app.kafka.schemaapp.schema\",\"fields\":[{\"name\":\"rewardName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipEmail\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UpdateEnrolment\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"rewardName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipEmail\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -174,8 +174,8 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
    * Creates a new UpdateEnrolment RecordBuilder.
    * @return A new UpdateEnrolment RecordBuilder
    */
-  public static app.kafka.schemaapp.schema.UpdateEnrolment.Builder newBuilder() {
-    return new app.kafka.schemaapp.schema.UpdateEnrolment.Builder();
+  public static app.kafka.avrodemo.schema.UpdateEnrolment.Builder newBuilder() {
+    return new app.kafka.avrodemo.schema.UpdateEnrolment.Builder();
   }
 
   /**
@@ -183,11 +183,11 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
    * @param other The existing builder to copy.
    * @return A new UpdateEnrolment RecordBuilder
    */
-  public static app.kafka.schemaapp.schema.UpdateEnrolment.Builder newBuilder(app.kafka.schemaapp.schema.UpdateEnrolment.Builder other) {
+  public static app.kafka.avrodemo.schema.UpdateEnrolment.Builder newBuilder(app.kafka.avrodemo.schema.UpdateEnrolment.Builder other) {
     if (other == null) {
-      return new app.kafka.schemaapp.schema.UpdateEnrolment.Builder();
+      return new app.kafka.avrodemo.schema.UpdateEnrolment.Builder();
     } else {
-      return new app.kafka.schemaapp.schema.UpdateEnrolment.Builder(other);
+      return new app.kafka.avrodemo.schema.UpdateEnrolment.Builder(other);
     }
   }
 
@@ -196,11 +196,11 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
    * @param other The existing instance to copy.
    * @return A new UpdateEnrolment RecordBuilder
    */
-  public static app.kafka.schemaapp.schema.UpdateEnrolment.Builder newBuilder(app.kafka.schemaapp.schema.UpdateEnrolment other) {
+  public static app.kafka.avrodemo.schema.UpdateEnrolment.Builder newBuilder(app.kafka.avrodemo.schema.UpdateEnrolment other) {
     if (other == null) {
-      return new app.kafka.schemaapp.schema.UpdateEnrolment.Builder();
+      return new app.kafka.avrodemo.schema.UpdateEnrolment.Builder();
     } else {
-      return new app.kafka.schemaapp.schema.UpdateEnrolment.Builder(other);
+      return new app.kafka.avrodemo.schema.UpdateEnrolment.Builder(other);
     }
   }
 
@@ -224,7 +224,7 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(app.kafka.schemaapp.schema.UpdateEnrolment.Builder other) {
+    private Builder(app.kafka.avrodemo.schema.UpdateEnrolment.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.rewardName)) {
         this.rewardName = data().deepCopy(fields()[0].schema(), other.rewardName);
@@ -244,7 +244,7 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
      * Creates a Builder by copying an existing UpdateEnrolment instance
      * @param other The existing instance to copy.
      */
-    private Builder(app.kafka.schemaapp.schema.UpdateEnrolment other) {
+    private Builder(app.kafka.avrodemo.schema.UpdateEnrolment other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.rewardName)) {
         this.rewardName = data().deepCopy(fields()[0].schema(), other.rewardName);
@@ -274,7 +274,7 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'rewardName'.
       * @return This builder.
       */
-    public app.kafka.schemaapp.schema.UpdateEnrolment.Builder setRewardName(java.lang.String value) {
+    public app.kafka.avrodemo.schema.UpdateEnrolment.Builder setRewardName(java.lang.String value) {
       validate(fields()[0], value);
       this.rewardName = value;
       fieldSetFlags()[0] = true;
@@ -294,7 +294,7 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'rewardName' field.
       * @return This builder.
       */
-    public app.kafka.schemaapp.schema.UpdateEnrolment.Builder clearRewardName() {
+    public app.kafka.avrodemo.schema.UpdateEnrolment.Builder clearRewardName() {
       rewardName = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -314,7 +314,7 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'rewardMembershipId'.
       * @return This builder.
       */
-    public app.kafka.schemaapp.schema.UpdateEnrolment.Builder setRewardMembershipId(java.lang.String value) {
+    public app.kafka.avrodemo.schema.UpdateEnrolment.Builder setRewardMembershipId(java.lang.String value) {
       validate(fields()[1], value);
       this.rewardMembershipId = value;
       fieldSetFlags()[1] = true;
@@ -334,7 +334,7 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'rewardMembershipId' field.
       * @return This builder.
       */
-    public app.kafka.schemaapp.schema.UpdateEnrolment.Builder clearRewardMembershipId() {
+    public app.kafka.avrodemo.schema.UpdateEnrolment.Builder clearRewardMembershipId() {
       rewardMembershipId = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -354,7 +354,7 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'rewardMembershipEmail'.
       * @return This builder.
       */
-    public app.kafka.schemaapp.schema.UpdateEnrolment.Builder setRewardMembershipEmail(java.lang.String value) {
+    public app.kafka.avrodemo.schema.UpdateEnrolment.Builder setRewardMembershipEmail(java.lang.String value) {
       validate(fields()[2], value);
       this.rewardMembershipEmail = value;
       fieldSetFlags()[2] = true;
@@ -374,7 +374,7 @@ public class UpdateEnrolment extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'rewardMembershipEmail' field.
       * @return This builder.
       */
-    public app.kafka.schemaapp.schema.UpdateEnrolment.Builder clearRewardMembershipEmail() {
+    public app.kafka.avrodemo.schema.UpdateEnrolment.Builder clearRewardMembershipEmail() {
       rewardMembershipEmail = null;
       fieldSetFlags()[2] = false;
       return this;

@@ -1,4 +1,4 @@
-package app.kafka.schemaapp.enrolment;
+package app.kafka.avrodemo.enrolment;
 
 import java.nio.charset.StandardCharsets;
 
@@ -6,8 +6,8 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-import app.kafka.schemaapp.schema.BaselineEventStructure;
-import app.kafka.schemaapp.schema.EventName;
+import app.kafka.avrodemo.schema.BaselineEventStructure;
+import app.kafka.avrodemo.schema.EventName;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
