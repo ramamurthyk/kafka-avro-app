@@ -9,8 +9,8 @@
                 "type": "enum",
                 "name": "EventName",
                 "symbols": [
-                    "CreateEnrolmentEvent",
-                    "CancelEnrolmentEvent",
+                    "CreateEnrolment",
+                    "CancelEnrolment",
                     "UpdateEnrolment"
                 ]
             }

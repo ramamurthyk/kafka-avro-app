@@ -18,7 +18,7 @@ public class EnrolmentController {
 	private CancelEnrolmentProducer cancelEnrolmentProducer;
 
 	@PostMapping(path = "/api/enrolments")
-	public void CreateEnrolment(@RequestBody EnrolmentRequest request) {
+	public void CreateEnrolment(@RequestBody CreateEnrolmentRequest request) {
 		log.info("Received POST request to create enrolment");
 
 		enrolmentProducer.sendCreateMessage(request);

@@ -137,6 +137,7 @@
 								<import>src/main/avro/CreateEnrolment.avsc</import>
 								<import>src/main/avro/CancelEnrolment.avsc</import>
 								<import>src/main/avro/UpdateEnrolment.avsc</import>
+								<import>src/main/avro/EnrolmentRequestMessageTypes.avsc</import>
 							</imports>
                             <outputDirectory>src/main/java</outputDirectory>
                             <stringType>String</stringType>
@@ -144,7 +145,54 @@
                     </execution>
                 </executions>
             </plugin>
+			<!-- Schema registration -->
+			<plugin>
+				<groupId>io.confluent</groupId>
+				<artifactId>kafka-schema-registry-maven-plugin</artifactId>
+				<version>7.1.0</version>
+				<configuration>
+					<schemaRegistryUrls>
+						<param>http://localhost:8081</param>
+					</schemaRegistryUrls>
+					<subjects>
+						<enrolment-request-value>src/main/avro/EnrolmentRequest.avsc</enrolment-request-value>
+						<messageheader>src/main/avro/MessageHeader.avsc</messageheader>
+						<createenrolment>src/main/avro/CreateEnrolment.avsc</createenrolment>
+						<cancelenrolment>src/main/avro/CancelEnrolment.avsc</cancelenrolment>
+						<updateenrolment>src/main/avro/UpdateEnrolment.avsc</updateenrolment>					
+					</subjects>
+					<schemaTypes>
+						<enrolment-request-value>AVRO</enrolment-request-value>
+						<messageheader>AVRO</messageheader>
+						<createenrolment>AVRO</createenrolment>
+						<cancelenrolment>AVRO</cancelenrolment>
+						<updateenrolment>AVRO</updateenrolment>
+					</schemaTypes>
+					<references>
+						<enrolment-request-value>
+							<reference>
+								<name>app.kafka.avrodemo.schema.MessageHeader</name>
+								<subject>messageheader</subject>
+							</reference>
+							<reference>
+								<name>app.kafka.avrodemo.schema.CreateEnrolment</name>
+								<subject>createenrolment</subject>
+							</reference>
+							<reference>
+								<name>app.kafka.avrodemo.schema.CancelEnrolment</name>
+								<subject>cancelenrolment</subject>
+							</reference>
+							<reference>
+								<name>app.kafka.avrodemo.schema.UpdateEnrolment</name>
+								<subject>updateenrolment</subject>
+							</reference>						
+						</enrolment-request-value>
+					</references>
+				</configuration>
+				<goals>
+					<goal>register</goal>
+				</goals>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>

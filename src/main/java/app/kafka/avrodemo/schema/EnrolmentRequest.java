@@ -13,26 +13,26 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class BaselineEventStructure extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3930163167777589609L;
+public class EnrolmentRequest extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 6974143893419508863L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"BaselineEventStructure\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"header\",\"type\":{\"type\":\"record\",\"name\":\"MessageHeader\",\"fields\":[{\"name\":\"eventName\",\"type\":{\"type\":\"enum\",\"name\":\"EventName\",\"symbols\":[\"CreateEnrolmentEvent\",\"CancelEnrolmentEvent\",\"UpdateEnrolment\"]}}]}},{\"name\":\"payload\",\"type\":[{\"type\":\"record\",\"name\":\"CreateEnrolment\",\"fields\":[{\"name\":\"entityId\",\"type\":\"int\"},{\"name\":\"rewardName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]}]},{\"type\":\"record\",\"name\":\"CancelEnrolment\",\"fields\":[{\"name\":\"entityId\",\"type\":\"int\"},{\"name\":\"rewardName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"reasonCode\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"ReasonCode\",\"symbols\":[\"MemberRequested\",\"PolicyCancelled\",\"PartnerMembershipCancelled\"]}]}]},{\"type\":\"record\",\"name\":\"UpdateEnrolment\",\"fields\":[{\"name\":\"rewardName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipEmail\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]}]}]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EnrolmentRequest\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"header\",\"type\":{\"type\":\"record\",\"name\":\"MessageHeader\",\"fields\":[{\"name\":\"eventName\",\"type\":{\"type\":\"enum\",\"name\":\"EventName\",\"symbols\":[\"CreateEnrolment\",\"CancelEnrolment\",\"UpdateEnrolment\"]}}]}},{\"name\":\"payload\",\"type\":[{\"type\":\"record\",\"name\":\"CreateEnrolment\",\"fields\":[{\"name\":\"entityId\",\"type\":\"int\"},{\"name\":\"rewardName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]}]},{\"type\":\"record\",\"name\":\"CancelEnrolment\",\"fields\":[{\"name\":\"entityId\",\"type\":\"int\"},{\"name\":\"rewardName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"reasonCode\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"ReasonCode\",\"symbols\":[\"MemberRequested\",\"PolicyCancelled\",\"PartnerMembershipCancelled\"]}]}]},{\"type\":\"record\",\"name\":\"UpdateEnrolment\",\"fields\":[{\"name\":\"rewardName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rewardMembershipEmail\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]}]}]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<BaselineEventStructure> ENCODER =
-      new BinaryMessageEncoder<BaselineEventStructure>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<EnrolmentRequest> ENCODER =
+      new BinaryMessageEncoder<EnrolmentRequest>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<BaselineEventStructure> DECODER =
-      new BinaryMessageDecoder<BaselineEventStructure>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<EnrolmentRequest> DECODER =
+      new BinaryMessageDecoder<EnrolmentRequest>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<BaselineEventStructure> getEncoder() {
+  public static BinaryMessageEncoder<EnrolmentRequest> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +40,7 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<BaselineEventStructure> getDecoder() {
+  public static BinaryMessageDecoder<EnrolmentRequest> getDecoder() {
     return DECODER;
   }
 
@@ -49,12 +49,12 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<BaselineEventStructure> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<BaselineEventStructure>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<EnrolmentRequest> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<EnrolmentRequest>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
-   * Serializes this BaselineEventStructure to a ByteBuffer.
+   * Serializes this EnrolmentRequest to a ByteBuffer.
    * @return a buffer holding the serialized data for this instance
    * @throws java.io.IOException if this instance could not be serialized
    */
@@ -63,12 +63,12 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
   }
 
   /**
-   * Deserializes a BaselineEventStructure from a ByteBuffer.
+   * Deserializes a EnrolmentRequest from a ByteBuffer.
    * @param b a byte buffer holding serialized data for an instance of this class
-   * @return a BaselineEventStructure instance decoded from the given buffer
+   * @return a EnrolmentRequest instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static BaselineEventStructure fromByteBuffer(
+  public static EnrolmentRequest fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -81,14 +81,14 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public BaselineEventStructure() {}
+  public EnrolmentRequest() {}
 
   /**
    * All-args constructor.
    * @param header The new value for header
    * @param payload The new value for payload
    */
-  public BaselineEventStructure(app.kafka.avrodemo.schema.MessageHeader header, java.lang.Object payload) {
+  public EnrolmentRequest(app.kafka.avrodemo.schema.MessageHeader header, java.lang.Object payload) {
     this.header = header;
     this.payload = payload;
   }
@@ -149,45 +149,45 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
   }
 
   /**
-   * Creates a new BaselineEventStructure RecordBuilder.
-   * @return A new BaselineEventStructure RecordBuilder
+   * Creates a new EnrolmentRequest RecordBuilder.
+   * @return A new EnrolmentRequest RecordBuilder
    */
-  public static app.kafka.avrodemo.schema.BaselineEventStructure.Builder newBuilder() {
-    return new app.kafka.avrodemo.schema.BaselineEventStructure.Builder();
+  public static app.kafka.avrodemo.schema.EnrolmentRequest.Builder newBuilder() {
+    return new app.kafka.avrodemo.schema.EnrolmentRequest.Builder();
   }
 
   /**
-   * Creates a new BaselineEventStructure RecordBuilder by copying an existing Builder.
+   * Creates a new EnrolmentRequest RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new BaselineEventStructure RecordBuilder
+   * @return A new EnrolmentRequest RecordBuilder
    */
-  public static app.kafka.avrodemo.schema.BaselineEventStructure.Builder newBuilder(app.kafka.avrodemo.schema.BaselineEventStructure.Builder other) {
+  public static app.kafka.avrodemo.schema.EnrolmentRequest.Builder newBuilder(app.kafka.avrodemo.schema.EnrolmentRequest.Builder other) {
     if (other == null) {
-      return new app.kafka.avrodemo.schema.BaselineEventStructure.Builder();
+      return new app.kafka.avrodemo.schema.EnrolmentRequest.Builder();
     } else {
-      return new app.kafka.avrodemo.schema.BaselineEventStructure.Builder(other);
+      return new app.kafka.avrodemo.schema.EnrolmentRequest.Builder(other);
     }
   }
 
   /**
-   * Creates a new BaselineEventStructure RecordBuilder by copying an existing BaselineEventStructure instance.
+   * Creates a new EnrolmentRequest RecordBuilder by copying an existing EnrolmentRequest instance.
    * @param other The existing instance to copy.
-   * @return A new BaselineEventStructure RecordBuilder
+   * @return A new EnrolmentRequest RecordBuilder
    */
-  public static app.kafka.avrodemo.schema.BaselineEventStructure.Builder newBuilder(app.kafka.avrodemo.schema.BaselineEventStructure other) {
+  public static app.kafka.avrodemo.schema.EnrolmentRequest.Builder newBuilder(app.kafka.avrodemo.schema.EnrolmentRequest other) {
     if (other == null) {
-      return new app.kafka.avrodemo.schema.BaselineEventStructure.Builder();
+      return new app.kafka.avrodemo.schema.EnrolmentRequest.Builder();
     } else {
-      return new app.kafka.avrodemo.schema.BaselineEventStructure.Builder(other);
+      return new app.kafka.avrodemo.schema.EnrolmentRequest.Builder(other);
     }
   }
 
   /**
-   * RecordBuilder for BaselineEventStructure instances.
+   * RecordBuilder for EnrolmentRequest instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<BaselineEventStructure>
-    implements org.apache.avro.data.RecordBuilder<BaselineEventStructure> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<EnrolmentRequest>
+    implements org.apache.avro.data.RecordBuilder<EnrolmentRequest> {
 
     private app.kafka.avrodemo.schema.MessageHeader header;
     private app.kafka.avrodemo.schema.MessageHeader.Builder headerBuilder;
@@ -202,7 +202,7 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(app.kafka.avrodemo.schema.BaselineEventStructure.Builder other) {
+    private Builder(app.kafka.avrodemo.schema.EnrolmentRequest.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.header)) {
         this.header = data().deepCopy(fields()[0].schema(), other.header);
@@ -218,10 +218,10 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
     }
 
     /**
-     * Creates a Builder by copying an existing BaselineEventStructure instance
+     * Creates a Builder by copying an existing EnrolmentRequest instance
      * @param other The existing instance to copy.
      */
-    private Builder(app.kafka.avrodemo.schema.BaselineEventStructure other) {
+    private Builder(app.kafka.avrodemo.schema.EnrolmentRequest other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.header)) {
         this.header = data().deepCopy(fields()[0].schema(), other.header);
@@ -248,7 +248,7 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
       * @param value The value of 'header'.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.BaselineEventStructure.Builder setHeader(app.kafka.avrodemo.schema.MessageHeader value) {
+    public app.kafka.avrodemo.schema.EnrolmentRequest.Builder setHeader(app.kafka.avrodemo.schema.MessageHeader value) {
       validate(fields()[0], value);
       this.headerBuilder = null;
       this.header = value;
@@ -285,7 +285,7 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
      * @return This builder.
      */
 
-    public app.kafka.avrodemo.schema.BaselineEventStructure.Builder setHeaderBuilder(app.kafka.avrodemo.schema.MessageHeader.Builder value) {
+    public app.kafka.avrodemo.schema.EnrolmentRequest.Builder setHeaderBuilder(app.kafka.avrodemo.schema.MessageHeader.Builder value) {
       clearHeader();
       headerBuilder = value;
       return this;
@@ -303,7 +303,7 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
       * Clears the value of the 'header' field.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.BaselineEventStructure.Builder clearHeader() {
+    public app.kafka.avrodemo.schema.EnrolmentRequest.Builder clearHeader() {
       header = null;
       headerBuilder = null;
       fieldSetFlags()[0] = false;
@@ -324,7 +324,7 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
       * @param value The value of 'payload'.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.BaselineEventStructure.Builder setPayload(java.lang.Object value) {
+    public app.kafka.avrodemo.schema.EnrolmentRequest.Builder setPayload(java.lang.Object value) {
       validate(fields()[1], value);
       this.payload = value;
       fieldSetFlags()[1] = true;
@@ -344,7 +344,7 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
       * Clears the value of the 'payload' field.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.BaselineEventStructure.Builder clearPayload() {
+    public app.kafka.avrodemo.schema.EnrolmentRequest.Builder clearPayload() {
       payload = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -352,9 +352,9 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
 
     @Override
     @SuppressWarnings("unchecked")
-    public BaselineEventStructure build() {
+    public EnrolmentRequest build() {
       try {
-        BaselineEventStructure record = new BaselineEventStructure();
+        EnrolmentRequest record = new EnrolmentRequest();
         if (headerBuilder != null) {
           try {
             record.header = this.headerBuilder.build();
@@ -376,8 +376,8 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<BaselineEventStructure>
-    WRITER$ = (org.apache.avro.io.DatumWriter<BaselineEventStructure>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<EnrolmentRequest>
+    WRITER$ = (org.apache.avro.io.DatumWriter<EnrolmentRequest>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -385,8 +385,8 @@ public class BaselineEventStructure extends org.apache.avro.specific.SpecificRec
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<BaselineEventStructure>
-    READER$ = (org.apache.avro.io.DatumReader<BaselineEventStructure>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<EnrolmentRequest>
+    READER$ = (org.apache.avro.io.DatumReader<EnrolmentRequest>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {

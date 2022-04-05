@@ -1,7 +1,7 @@
 {
     "namespace": "app.kafka.avrodemo.schema",
     "type": "record",
-    "name": "BaselineEventStructure",
+    "name": "EnrolmentRequest",
     "fields": [
         {
             "name": "header",
