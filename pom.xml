@@ -84,27 +84,25 @@
 		<!-- Schema registry -->
 		<dependency>
             <groupId>io.confluent</groupId>
-            <artifactId>kafka-schema-registry-client</artifactId>   <!-- <1> -->
+            <artifactId>kafka-schema-registry-client</artifactId>
             <version>7.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.avro</groupId>
-            <artifactId>avro</artifactId>   <!-- <2> -->
+            <artifactId>avro</artifactId>
             <version>1.11.0</version>
         </dependency>
         <dependency>
             <groupId>io.confluent</groupId>
-            <artifactId>kafka-avro-serializer</artifactId>  <!-- <3> -->
+            <artifactId>kafka-avro-serializer</artifactId>
             <version>7.0.2</version>
         </dependency>
         <!-- <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>monitoring-interceptors</artifactId>
             <version>7.0.1</version>
-        </dependency> -->
-		
+        </dependency> -->		
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -155,8 +153,7 @@
 						<param>http://localhost:8081</param>
 					</schemaRegistryUrls>
 					<subjects>
-						<enrolment-request-value>src/main/avro/EnrolmentRequest.avsc</enrolment-request-value>
-						<messageheader>src/main/avro/MessageHeader.avsc</messageheader>
+						<enrolment-request-value>src/main/avro/EnrolmentRequestMessageTypes.avsc</enrolment-request-value>						
 						<createenrolment>src/main/avro/CreateEnrolment.avsc</createenrolment>
 						<cancelenrolment>src/main/avro/CancelEnrolment.avsc</cancelenrolment>
 						<updateenrolment>src/main/avro/UpdateEnrolment.avsc</updateenrolment>					
@@ -169,11 +166,7 @@
 						<updateenrolment>AVRO</updateenrolment>
 					</schemaTypes>
 					<references>
-						<enrolment-request-value>
-							<reference>
-								<name>app.kafka.avrodemo.schema.MessageHeader</name>
-								<subject>messageheader</subject>
-							</reference>
+						<enrolment-request-value>							
 							<reference>
 								<name>app.kafka.avrodemo.schema.CreateEnrolment</name>
 								<subject>createenrolment</subject>

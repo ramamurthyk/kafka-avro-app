@@ -8,6 +8,8 @@
 - https://mvallim.github.io/spring-schema-registry/
 - https://www.confluent.io/blog/multiple-event-types-in-the-same-kafka-topic/
 - https://code.visualstudio.com/docs/java/java-linting
+- https://medium.com/swlh/demystifying-spring-kafka-142eea95abf1
+- https://docs.spring.io/spring-boot/docs/2.0.4.RELEASE/reference/htmlsingle/#boot-features-kafka-extra-props
 
 # Debug logs
 ``` Bash
