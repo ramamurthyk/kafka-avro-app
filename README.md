@@ -11,4 +11,6 @@ Demonstrates usage of Confluent Schema Registry to provide strongly typed events
 - Apache Avro Data Serialization
 
 ## Details
-Refer [Schema Registry Integration](/docs/SchemaRegistry.md) for details.
+Refer the below docs for details.
+- [Schema Registry Integration](/docs/SchemaRegistry.md)
+- [Avro Union Types](/docs/AvroUnionTypes.md)
