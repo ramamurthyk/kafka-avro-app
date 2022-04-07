@@ -4,7 +4,6 @@ import java.nio.charset.StandardCharsets;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.header.Headers;
-import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -71,7 +70,12 @@ public class EnrolmentConsumer {
     // types which won be processed by this consumer.
     @KafkaHandler(isDefault = true)
     public void processOtherMessages(ConsumerRecord<String, Object> record) {
+
         log.info(String.format("processOtherMessages: Received <- key: %s. value: %s", record.key(), record.value()));
         process(record.headers(), record.value());
+
+        log.info(record.value().toString());
+        log.info(record.value().getClass().toString()); // printing: class app.kafka.avrodemo.schema.CreateEnrolment
     }
+
 }
