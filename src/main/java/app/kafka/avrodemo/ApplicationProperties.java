@@ -17,13 +17,16 @@ public class ApplicationProperties {
     public String bootstrapServers;
 
     // Topic names.
-    @Value("${app.topic.enrolment-request}")
-    public String enrolmentRequestTopic;
+    @Value("${app.topic.enrolment.uniontype}")
+    public String enrolmentUnionTypeTopic;
 
-    @Value("${app.topic.enrolment}")
-    public String enrolmentTopic;
+    @Value("${app.topic.enrolment.payloadtype}")
+    public String enrolmentPayloadTypeTopic;
 
     // Consumers.
-    @Value("${app.enrolment.kafka.consumer.group-id}")
-    public String enrolmentConsumerGroupId;
+    @Value("${app.enrolment.uniontype.kafka.consumer.group-id}")
+    public String enrolmentUnionTypeConsumerGroupId;
+
+    @Value("${app.enrolment.payloadtype.kafka.consumer.group-id}")
+    public String enrolmentPayloadTypeConsumerGroupId;
 }

@@ -1,4 +1,4 @@
-package app.kafka.avrodemo.enrolment;
+package app.kafka.avrodemo.enrolment.uniontype;
 
 import java.util.UUID;
 
@@ -12,36 +12,38 @@ import app.kafka.avrodemo.ApplicationProperties;
 import app.kafka.avrodemo.common.MessageTypes;
 import app.kafka.avrodemo.common.RecordHeaderNames;
 import app.kafka.avrodemo.common.RecordHeaders;
-import app.kafka.avrodemo.schema.CreateEnrolment;
+import app.kafka.avrodemo.schema.CancelEnrolment;
+import app.kafka.avrodemo.schema.Reason;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class EnrolmentProducer {
+public class CancelEnrolmentProducer {
     @Autowired
-    private KafkaTemplate<String, CreateEnrolment> template;
+    private KafkaTemplate<Integer, CancelEnrolment> template;
 
     @Autowired
     private ApplicationProperties properties;
 
-    public void sendCreateMessage(CreateEnrolmentRequest request) {
+    public void sendCancelMessage(CancelEnrolmentRequest request) {
         // Build message.
-        CreateEnrolment createEnrolment = CreateEnrolment.newBuilder()
-                .setEntityId(request.entityId())
-                .setRewardName(request.rewardName()).setRewardMembershipId(request.rewardMembershipId())
+        CancelEnrolment cancelEnrolment = CancelEnrolment.newBuilder()
+                .setCustomerId(request.customerId())
+                .setProgramme(request.programme())
+                .setReason(Reason.PoorCustomerService)
                 .build();
 
         // Create record.
-        ProducerRecord<String, CreateEnrolment> record = new ProducerRecord<String, CreateEnrolment>(
-                properties.enrolmentRequestTopic, null, Integer.toString(request.entityId()),
-                createEnrolment);
+        ProducerRecord<Integer, CancelEnrolment> record = new ProducerRecord<Integer, CancelEnrolment>(
+                properties.enrolmentUnionTypeTopic, null, request.customerId(),
+                cancelEnrolment);
 
         // Add headers.
         record.headers().add(new RecordHeader(RecordHeaderNames.MESSAGE_ID,
                 UUID.randomUUID().toString().getBytes()));
         record.headers()
                 .add(new RecordHeader(RecordHeaderNames.MESSAGE_TYPE,
-                        MessageTypes.CREATE_ENROLMENT.getBytes()));
+                        MessageTypes.CANCEL_ENROLMENT.getBytes()));
 
         // Send.
         this.template.send(record);

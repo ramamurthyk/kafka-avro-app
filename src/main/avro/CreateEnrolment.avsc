@@ -4,19 +4,19 @@
     "name": "CreateEnrolment",
     "fields": [
         {
-            "name": "entityId",
+            "name": "customerId",
             "type": "int"
-        },
+        },        
         {
-            "name": "rewardName",
-            "type": "string"
-        },
-        {
-            "name": "rewardMembershipId",
+            "name": "membershipId",
             "type": [
                 "null",
                 "string"
             ]
+        },
+        {
+            "name": "programme",
+            "type": "string"
         }
     ]
 }

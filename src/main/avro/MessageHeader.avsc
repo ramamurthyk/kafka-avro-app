@@ -4,14 +4,17 @@
     "name": "MessageHeader",
     "fields": [
         {
-            "name": "eventName",
+            "name": "messageId",
+            "type": "string"
+        },
+        {
+            "name": "messageType",
             "type": {
                 "type": "enum",
-                "name": "EventName",
+                "name": "MessageType",
                 "symbols": [
                     "CreateEnrolment",
-                    "CancelEnrolment",
-                    "UpdateEnrolment"
+                    "CancelEnrolment"
                 ]
             }
         }

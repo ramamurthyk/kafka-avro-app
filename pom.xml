@@ -49,7 +49,6 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -85,7 +84,7 @@
 		<dependency>
             <groupId>io.confluent</groupId>
             <artifactId>kafka-schema-registry-client</artifactId>
-            <version>7.0.2</version>
+            <version>7.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.avro</groupId>
@@ -95,13 +94,29 @@
         <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>kafka-avro-serializer</artifactId>
-            <version>7.0.2</version>
+            <version>7.1.0</version>
         </dependency>
+		<!-- <dependency>
+			<groupId>io.confluent</groupId>
+			<artifactId>kafka-serde-tools-package</artifactId>
+			<version>7.1.0</version>
+		</dependency> -->
+		<!-- <dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>7.1.0</version>
+		</dependency> -->
+		<!-- Produces build errors. -->
+		<dependency>
+			<groupId>io.confluent</groupId>
+			<artifactId>kafka-streams-avro-serde</artifactId>
+			<version>7.1.0</version>
+		</dependency>
         <!-- <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>monitoring-interceptors</artifactId>
-            <version>7.0.1</version>
-        </dependency> -->		
+            <version>7.1.0</version>
+        </dependency>		 -->
 	</dependencies>
 	<build>
 		<plugins>
@@ -130,13 +145,14 @@
                         </goals>
                         <configuration>
                             <sourceDirectory>src/main/avro</sourceDirectory>
+							<excludes>
+								<exclude>src/main/avro/EnrolmentRequestMessageTypes.avsc</exclude>
+							</excludes>
 							<imports>
 								<import>src/main/avro/MessageHeader.avsc</import>
 								<import>src/main/avro/CreateEnrolment.avsc</import>
 								<import>src/main/avro/CancelEnrolment.avsc</import>
-								<import>src/main/avro/UpdateEnrolment.avsc</import>
-								<import>src/main/avro/EnrolmentRequestMessageTypes.avsc</import>
-							</imports>
+							</imports>							
                             <outputDirectory>src/main/java</outputDirectory>
                             <stringType>String</stringType>
                         </configuration>
@@ -153,33 +169,44 @@
 						<param>http://localhost:8081</param>
 					</schemaRegistryUrls>
 					<subjects>
-						<enrolment-request-value>src/main/avro/EnrolmentRequestMessageTypes.avsc</enrolment-request-value>						
-						<createenrolment>src/main/avro/CreateEnrolment.avsc</createenrolment>
-						<cancelenrolment>src/main/avro/CancelEnrolment.avsc</cancelenrolment>
-						<updateenrolment>src/main/avro/UpdateEnrolment.avsc</updateenrolment>					
+						<messageHeader>src/main/avro/MessageHeader.avsc</messageHeader>
+						<createEnrolment>src/main/avro/CreateEnrolment.avsc</createEnrolment>
+						<cancelEnrolment>src/main/avro/CancelEnrolment.avsc</cancelEnrolment>		
+						<enrolments-uniontype-value>src/main/avro/EnrolmentRequestMessageTypes.avsc</enrolments-uniontype-value>
+						<enrolments-payloadtype-value>src/main/avro/EnrolmentRequest.avsc</enrolments-payloadtype-value>
 					</subjects>
 					<schemaTypes>
-						<enrolment-request-value>AVRO</enrolment-request-value>
-						<messageheader>AVRO</messageheader>
-						<createenrolment>AVRO</createenrolment>
-						<cancelenrolment>AVRO</cancelenrolment>
-						<updateenrolment>AVRO</updateenrolment>
+						<messageHeader>AVRO</messageHeader>
+						<createEnrolment>AVRO</createEnrolment>
+						<cancelEnrolment>AVRO</cancelEnrolment>
+						<enrolments-uniontype-value>AVRO</enrolments-uniontype-value>
+						<enrolments-payloadtype-value>AVRO</enrolments-payloadtype-value>
 					</schemaTypes>
 					<references>
-						<enrolment-request-value>							
+						<enrolments-uniontype-value>							
 							<reference>
 								<name>app.kafka.avrodemo.schema.CreateEnrolment</name>
-								<subject>createenrolment</subject>
+								<subject>createEnrolment</subject>
 							</reference>
 							<reference>
 								<name>app.kafka.avrodemo.schema.CancelEnrolment</name>
-								<subject>cancelenrolment</subject>
+								<subject>cancelEnrolment</subject>
+							</reference>						
+						</enrolments-uniontype-value>
+						<enrolments-payloadtype-value>
+							<reference>
+								<name>app.kafka.avrodemo.schema.MessageHeader</name>
+								<subject>messageHeader</subject>
 							</reference>
 							<reference>
-								<name>app.kafka.avrodemo.schema.UpdateEnrolment</name>
-								<subject>updateenrolment</subject>
-							</reference>						
-						</enrolment-request-value>
+								<name>app.kafka.avrodemo.schema.CreateEnrolment</name>
+								<subject>createEnrolment</subject>
+							</reference>
+							<reference>
+								<name>app.kafka.avrodemo.schema.CancelEnrolment</name>
+								<subject>cancelEnrolment</subject>
+							</reference>	
+						</enrolments-payloadtype-value>
 					</references>
 				</configuration>
 				<goals>

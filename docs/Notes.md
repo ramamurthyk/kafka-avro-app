@@ -15,6 +15,12 @@ Avro SerDes
 - https://docs.confluent.io/platform/current/streams/developer-guide/datatypes.html#streams-developer-guide-serdes
 - https://docs.confluent.io/platform/current/schema-registry/serdes-develop/serdes-avro.html#sr-test-drive-avro
 
+Error handling
+- Good one - https://www.confluent.io/blog/spring-kafka-can-your-kafka-consumers-handle-a-poison-pill/
+
+Read later
+- https://data-flair.training/blogs/kafka-clients/
+
 # Debug logs
 ``` Bash
 2022-04-03 22:42:54.916  INFO 175592 --- [nio-8080-exec-4] a.k.s.enrolment.EnrolmentController      : Received POST request to create enrolment

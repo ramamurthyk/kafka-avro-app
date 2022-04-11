@@ -1,4 +1,4 @@
-package app.kafka.avrodemo.enrolment;
+package app.kafka.avrodemo.enrolment.payloadtype;
 
 import java.nio.charset.StandardCharsets;
 
@@ -11,14 +11,13 @@ import org.springframework.stereotype.Component;
 import app.kafka.avrodemo.common.MessageTypes;
 import app.kafka.avrodemo.common.RecordHeaderNames;
 import app.kafka.avrodemo.common.RecordHeaders;
-import app.kafka.avrodemo.schema.CancelEnrolment;
-import app.kafka.avrodemo.schema.CreateEnrolment;
+import app.kafka.avrodemo.schema.EnrolmentRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-@KafkaListener(id = "${app.enrolment.kafka.consumer.group-id}", topics = "${app.topic.enrolment-request}")
-public class EnrolmentConsumer {
+@KafkaListener(id = "${app.enrolment.payloadtype.kafka.consumer.group-id}", topics = "${app.topic.enrolment.payloadtype}")
+public class PEnrolmentConsumer {
     public void process(Headers headers, Object message) {
         // Log headers.
         RecordHeaders.log(headers);
@@ -49,18 +48,9 @@ public class EnrolmentConsumer {
     // This method is not being called. Requires investigation and potentially type
     // matching configuration during Avro deserialisation.
     @KafkaHandler
-    public void processEnrolmentRequest(ConsumerRecord<String, CreateEnrolment> record) {
+    public void processEnrolmentRequest(ConsumerRecord<String, EnrolmentRequest> record) {
         log.info(
                 String.format("processEnrolmentRequest: Received <- key: %s. value: %s", record.key(), record.value()));
-        process(record.headers(), record.value());
-    }
-
-    // This method is not being called. Requires investigation and potentially type
-    // matching configuration during Avro deserialisation.
-    @KafkaHandler
-    public void processEnrolmentCancellation(ConsumerRecord<String, CancelEnrolment> record) {
-        log.info(String.format("processEnrolmentCancellation: Received <- key: %s. value: %s", record.key(),
-                record.value()));
         process(record.headers(), record.value());
     }
 
@@ -69,13 +59,11 @@ public class EnrolmentConsumer {
     // This method would anyway be required to receive and acknowledge messages
     // types which won be processed by this consumer.
     @KafkaHandler(isDefault = true)
-    public void processOtherMessages(ConsumerRecord<String, Object> record) {
-
+    public void processOtherMessages(ConsumerRecord<String, EnrolmentRequest> record) {
         log.info(String.format("processOtherMessages: Received <- key: %s. value: %s", record.key(), record.value()));
         process(record.headers(), record.value());
 
         log.info(record.value().toString());
-        log.info(record.value().getClass().toString()); // printing: class app.kafka.avrodemo.schema.CreateEnrolment
+        log.info(record.value().getClass().toString()); // printing: class app.kafka.avrodemo.schema.EnrolmentRequest
     }
-
 }

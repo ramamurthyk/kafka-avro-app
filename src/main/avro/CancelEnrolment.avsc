@@ -4,24 +4,25 @@
     "name": "CancelEnrolment",
     "fields": [
         {
-            "name": "entityId",
+            "name": "customerId",
             "type": "int"
         },
         {
-            "name": "rewardName",
+            "name": "programme",
             "type": "string"
         },
         {
-            "name": "reasonCode",
+            "name": "reason",
             "type": [
                 "null",
                 {
                     "type": "enum",
-                    "name": "ReasonCode",
+                    "name": "Reason",
                     "symbols": [
-                        "MemberRequested",
-                        "PolicyCancelled",
-                        "PartnerMembershipCancelled"
+                        "NotUsed",
+                        "EnrolledElseWhere",
+                        "TooExpensive",
+                        "PoorCustomerService"
                     ]
                 }
             ]

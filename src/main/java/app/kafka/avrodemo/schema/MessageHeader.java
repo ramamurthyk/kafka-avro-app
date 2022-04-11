@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8300422810799473093L;
+  private static final long serialVersionUID = -2385213335350476713L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MessageHeader\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"eventName\",\"type\":{\"type\":\"enum\",\"name\":\"EventName\",\"symbols\":[\"CreateEnrolment\",\"CancelEnrolment\",\"UpdateEnrolment\"]}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"MessageHeader\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"messageId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"messageType\",\"type\":{\"type\":\"enum\",\"name\":\"MessageType\",\"symbols\":[\"CreateEnrolment\",\"CancelEnrolment\"]}}],\"subject\":\"messageHeader\",\"version\":1}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -73,7 +73,8 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
     return DECODER.decode(b);
   }
 
-  private app.kafka.avrodemo.schema.EventName eventName;
+  private java.lang.String messageId;
+  private app.kafka.avrodemo.schema.MessageType messageType;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -84,10 +85,12 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
 
   /**
    * All-args constructor.
-   * @param eventName The new value for eventName
+   * @param messageId The new value for messageId
+   * @param messageType The new value for messageType
    */
-  public MessageHeader(app.kafka.avrodemo.schema.EventName eventName) {
-    this.eventName = eventName;
+  public MessageHeader(java.lang.String messageId, app.kafka.avrodemo.schema.MessageType messageType) {
+    this.messageId = messageId;
+    this.messageType = messageType;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -95,7 +98,8 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return eventName;
+    case 0: return messageId;
+    case 1: return messageType;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -104,26 +108,44 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: eventName = (app.kafka.avrodemo.schema.EventName)value$; break;
+    case 0: messageId = value$ != null ? value$.toString() : null; break;
+    case 1: messageType = (app.kafka.avrodemo.schema.MessageType)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
   /**
-   * Gets the value of the 'eventName' field.
-   * @return The value of the 'eventName' field.
+   * Gets the value of the 'messageId' field.
+   * @return The value of the 'messageId' field.
    */
-  public app.kafka.avrodemo.schema.EventName getEventName() {
-    return eventName;
+  public java.lang.String getMessageId() {
+    return messageId;
   }
 
 
   /**
-   * Sets the value of the 'eventName' field.
+   * Sets the value of the 'messageId' field.
    * @param value the value to set.
    */
-  public void setEventName(app.kafka.avrodemo.schema.EventName value) {
-    this.eventName = value;
+  public void setMessageId(java.lang.String value) {
+    this.messageId = value;
+  }
+
+  /**
+   * Gets the value of the 'messageType' field.
+   * @return The value of the 'messageType' field.
+   */
+  public app.kafka.avrodemo.schema.MessageType getMessageType() {
+    return messageType;
+  }
+
+
+  /**
+   * Sets the value of the 'messageType' field.
+   * @param value the value to set.
+   */
+  public void setMessageType(app.kafka.avrodemo.schema.MessageType value) {
+    this.messageType = value;
   }
 
   /**
@@ -167,7 +189,8 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<MessageHeader>
     implements org.apache.avro.data.RecordBuilder<MessageHeader> {
 
-    private app.kafka.avrodemo.schema.EventName eventName;
+    private java.lang.String messageId;
+    private app.kafka.avrodemo.schema.MessageType messageType;
 
     /** Creates a new Builder */
     private Builder() {
@@ -180,9 +203,13 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
      */
     private Builder(app.kafka.avrodemo.schema.MessageHeader.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.eventName)) {
-        this.eventName = data().deepCopy(fields()[0].schema(), other.eventName);
+      if (isValidValue(fields()[0], other.messageId)) {
+        this.messageId = data().deepCopy(fields()[0].schema(), other.messageId);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
+      }
+      if (isValidValue(fields()[1], other.messageType)) {
+        this.messageType = data().deepCopy(fields()[1].schema(), other.messageType);
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
     }
 
@@ -192,49 +219,93 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
      */
     private Builder(app.kafka.avrodemo.schema.MessageHeader other) {
       super(SCHEMA$, MODEL$);
-      if (isValidValue(fields()[0], other.eventName)) {
-        this.eventName = data().deepCopy(fields()[0].schema(), other.eventName);
+      if (isValidValue(fields()[0], other.messageId)) {
+        this.messageId = data().deepCopy(fields()[0].schema(), other.messageId);
         fieldSetFlags()[0] = true;
+      }
+      if (isValidValue(fields()[1], other.messageType)) {
+        this.messageType = data().deepCopy(fields()[1].schema(), other.messageType);
+        fieldSetFlags()[1] = true;
       }
     }
 
     /**
-      * Gets the value of the 'eventName' field.
+      * Gets the value of the 'messageId' field.
       * @return The value.
       */
-    public app.kafka.avrodemo.schema.EventName getEventName() {
-      return eventName;
+    public java.lang.String getMessageId() {
+      return messageId;
     }
 
 
     /**
-      * Sets the value of the 'eventName' field.
-      * @param value The value of 'eventName'.
+      * Sets the value of the 'messageId' field.
+      * @param value The value of 'messageId'.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.MessageHeader.Builder setEventName(app.kafka.avrodemo.schema.EventName value) {
+    public app.kafka.avrodemo.schema.MessageHeader.Builder setMessageId(java.lang.String value) {
       validate(fields()[0], value);
-      this.eventName = value;
+      this.messageId = value;
       fieldSetFlags()[0] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'eventName' field has been set.
-      * @return True if the 'eventName' field has been set, false otherwise.
+      * Checks whether the 'messageId' field has been set.
+      * @return True if the 'messageId' field has been set, false otherwise.
       */
-    public boolean hasEventName() {
+    public boolean hasMessageId() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-      * Clears the value of the 'eventName' field.
+      * Clears the value of the 'messageId' field.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.MessageHeader.Builder clearEventName() {
-      eventName = null;
+    public app.kafka.avrodemo.schema.MessageHeader.Builder clearMessageId() {
+      messageId = null;
       fieldSetFlags()[0] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'messageType' field.
+      * @return The value.
+      */
+    public app.kafka.avrodemo.schema.MessageType getMessageType() {
+      return messageType;
+    }
+
+
+    /**
+      * Sets the value of the 'messageType' field.
+      * @param value The value of 'messageType'.
+      * @return This builder.
+      */
+    public app.kafka.avrodemo.schema.MessageHeader.Builder setMessageType(app.kafka.avrodemo.schema.MessageType value) {
+      validate(fields()[1], value);
+      this.messageType = value;
+      fieldSetFlags()[1] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'messageType' field has been set.
+      * @return True if the 'messageType' field has been set, false otherwise.
+      */
+    public boolean hasMessageType() {
+      return fieldSetFlags()[1];
+    }
+
+
+    /**
+      * Clears the value of the 'messageType' field.
+      * @return This builder.
+      */
+    public app.kafka.avrodemo.schema.MessageHeader.Builder clearMessageType() {
+      messageType = null;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -243,7 +314,8 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
     public MessageHeader build() {
       try {
         MessageHeader record = new MessageHeader();
-        record.eventName = fieldSetFlags()[0] ? this.eventName : (app.kafka.avrodemo.schema.EventName) defaultValue(fields()[0]);
+        record.messageId = fieldSetFlags()[0] ? this.messageId : (java.lang.String) defaultValue(fields()[0]);
+        record.messageType = fieldSetFlags()[1] ? this.messageType : (app.kafka.avrodemo.schema.MessageType) defaultValue(fields()[1]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -276,7 +348,9 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeEnum(this.eventName.ordinal());
+    out.writeString(this.messageId);
+
+    out.writeEnum(this.messageType.ordinal());
 
   }
 
@@ -285,13 +359,19 @@ public class MessageHeader extends org.apache.avro.specific.SpecificRecordBase i
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.eventName = app.kafka.avrodemo.schema.EventName.values()[in.readEnum()];
+      this.messageId = in.readString();
+
+      this.messageType = app.kafka.avrodemo.schema.MessageType.values()[in.readEnum()];
 
     } else {
-      for (int i = 0; i < 1; i++) {
+      for (int i = 0; i < 2; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.eventName = app.kafka.avrodemo.schema.EventName.values()[in.readEnum()];
+          this.messageId = in.readString();
+          break;
+
+        case 1:
+          this.messageType = app.kafka.avrodemo.schema.MessageType.values()[in.readEnum()];
           break;
 
         default:

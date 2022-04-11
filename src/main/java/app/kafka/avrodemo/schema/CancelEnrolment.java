@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -7124417957071912475L;
+  private static final long serialVersionUID = 1872227268350452900L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CancelEnrolment\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"entityId\",\"type\":\"int\"},{\"name\":\"rewardName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"reasonCode\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"ReasonCode\",\"symbols\":[\"MemberRequested\",\"PolicyCancelled\",\"PartnerMembershipCancelled\"]}]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CancelEnrolment\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"customerId\",\"type\":\"int\"},{\"name\":\"programme\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"reason\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"Reason\",\"symbols\":[\"NotUsed\",\"EnrolledElseWhere\",\"TooExpensive\",\"PoorCustomerService\"]}]}],\"subject\":\"cancelEnrolment\",\"version\":1}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -73,9 +73,9 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
     return DECODER.decode(b);
   }
 
-  private int entityId;
-  private java.lang.String rewardName;
-  private app.kafka.avrodemo.schema.ReasonCode reasonCode;
+  private int customerId;
+  private java.lang.String programme;
+  private app.kafka.avrodemo.schema.Reason reason;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -86,14 +86,14 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
 
   /**
    * All-args constructor.
-   * @param entityId The new value for entityId
-   * @param rewardName The new value for rewardName
-   * @param reasonCode The new value for reasonCode
+   * @param customerId The new value for customerId
+   * @param programme The new value for programme
+   * @param reason The new value for reason
    */
-  public CancelEnrolment(java.lang.Integer entityId, java.lang.String rewardName, app.kafka.avrodemo.schema.ReasonCode reasonCode) {
-    this.entityId = entityId;
-    this.rewardName = rewardName;
-    this.reasonCode = reasonCode;
+  public CancelEnrolment(java.lang.Integer customerId, java.lang.String programme, app.kafka.avrodemo.schema.Reason reason) {
+    this.customerId = customerId;
+    this.programme = programme;
+    this.reason = reason;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -101,9 +101,9 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return entityId;
-    case 1: return rewardName;
-    case 2: return reasonCode;
+    case 0: return customerId;
+    case 1: return programme;
+    case 2: return reason;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -112,62 +112,62 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: entityId = (java.lang.Integer)value$; break;
-    case 1: rewardName = value$ != null ? value$.toString() : null; break;
-    case 2: reasonCode = (app.kafka.avrodemo.schema.ReasonCode)value$; break;
+    case 0: customerId = (java.lang.Integer)value$; break;
+    case 1: programme = value$ != null ? value$.toString() : null; break;
+    case 2: reason = (app.kafka.avrodemo.schema.Reason)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
   /**
-   * Gets the value of the 'entityId' field.
-   * @return The value of the 'entityId' field.
+   * Gets the value of the 'customerId' field.
+   * @return The value of the 'customerId' field.
    */
-  public int getEntityId() {
-    return entityId;
+  public int getCustomerId() {
+    return customerId;
   }
 
 
   /**
-   * Sets the value of the 'entityId' field.
+   * Sets the value of the 'customerId' field.
    * @param value the value to set.
    */
-  public void setEntityId(int value) {
-    this.entityId = value;
+  public void setCustomerId(int value) {
+    this.customerId = value;
   }
 
   /**
-   * Gets the value of the 'rewardName' field.
-   * @return The value of the 'rewardName' field.
+   * Gets the value of the 'programme' field.
+   * @return The value of the 'programme' field.
    */
-  public java.lang.String getRewardName() {
-    return rewardName;
+  public java.lang.String getProgramme() {
+    return programme;
   }
 
 
   /**
-   * Sets the value of the 'rewardName' field.
+   * Sets the value of the 'programme' field.
    * @param value the value to set.
    */
-  public void setRewardName(java.lang.String value) {
-    this.rewardName = value;
+  public void setProgramme(java.lang.String value) {
+    this.programme = value;
   }
 
   /**
-   * Gets the value of the 'reasonCode' field.
-   * @return The value of the 'reasonCode' field.
+   * Gets the value of the 'reason' field.
+   * @return The value of the 'reason' field.
    */
-  public app.kafka.avrodemo.schema.ReasonCode getReasonCode() {
-    return reasonCode;
+  public app.kafka.avrodemo.schema.Reason getReason() {
+    return reason;
   }
 
 
   /**
-   * Sets the value of the 'reasonCode' field.
+   * Sets the value of the 'reason' field.
    * @param value the value to set.
    */
-  public void setReasonCode(app.kafka.avrodemo.schema.ReasonCode value) {
-    this.reasonCode = value;
+  public void setReason(app.kafka.avrodemo.schema.Reason value) {
+    this.reason = value;
   }
 
   /**
@@ -211,9 +211,9 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<CancelEnrolment>
     implements org.apache.avro.data.RecordBuilder<CancelEnrolment> {
 
-    private int entityId;
-    private java.lang.String rewardName;
-    private app.kafka.avrodemo.schema.ReasonCode reasonCode;
+    private int customerId;
+    private java.lang.String programme;
+    private app.kafka.avrodemo.schema.Reason reason;
 
     /** Creates a new Builder */
     private Builder() {
@@ -226,16 +226,16 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
      */
     private Builder(app.kafka.avrodemo.schema.CancelEnrolment.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.entityId)) {
-        this.entityId = data().deepCopy(fields()[0].schema(), other.entityId);
+      if (isValidValue(fields()[0], other.customerId)) {
+        this.customerId = data().deepCopy(fields()[0].schema(), other.customerId);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.rewardName)) {
-        this.rewardName = data().deepCopy(fields()[1].schema(), other.rewardName);
+      if (isValidValue(fields()[1], other.programme)) {
+        this.programme = data().deepCopy(fields()[1].schema(), other.programme);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.reasonCode)) {
-        this.reasonCode = data().deepCopy(fields()[2].schema(), other.reasonCode);
+      if (isValidValue(fields()[2], other.reason)) {
+        this.reason = data().deepCopy(fields()[2].schema(), other.reason);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
     }
@@ -246,135 +246,135 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
      */
     private Builder(app.kafka.avrodemo.schema.CancelEnrolment other) {
       super(SCHEMA$, MODEL$);
-      if (isValidValue(fields()[0], other.entityId)) {
-        this.entityId = data().deepCopy(fields()[0].schema(), other.entityId);
+      if (isValidValue(fields()[0], other.customerId)) {
+        this.customerId = data().deepCopy(fields()[0].schema(), other.customerId);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.rewardName)) {
-        this.rewardName = data().deepCopy(fields()[1].schema(), other.rewardName);
+      if (isValidValue(fields()[1], other.programme)) {
+        this.programme = data().deepCopy(fields()[1].schema(), other.programme);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.reasonCode)) {
-        this.reasonCode = data().deepCopy(fields()[2].schema(), other.reasonCode);
+      if (isValidValue(fields()[2], other.reason)) {
+        this.reason = data().deepCopy(fields()[2].schema(), other.reason);
         fieldSetFlags()[2] = true;
       }
     }
 
     /**
-      * Gets the value of the 'entityId' field.
+      * Gets the value of the 'customerId' field.
       * @return The value.
       */
-    public int getEntityId() {
-      return entityId;
+    public int getCustomerId() {
+      return customerId;
     }
 
 
     /**
-      * Sets the value of the 'entityId' field.
-      * @param value The value of 'entityId'.
+      * Sets the value of the 'customerId' field.
+      * @param value The value of 'customerId'.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.CancelEnrolment.Builder setEntityId(int value) {
+    public app.kafka.avrodemo.schema.CancelEnrolment.Builder setCustomerId(int value) {
       validate(fields()[0], value);
-      this.entityId = value;
+      this.customerId = value;
       fieldSetFlags()[0] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'entityId' field has been set.
-      * @return True if the 'entityId' field has been set, false otherwise.
+      * Checks whether the 'customerId' field has been set.
+      * @return True if the 'customerId' field has been set, false otherwise.
       */
-    public boolean hasEntityId() {
+    public boolean hasCustomerId() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-      * Clears the value of the 'entityId' field.
+      * Clears the value of the 'customerId' field.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.CancelEnrolment.Builder clearEntityId() {
+    public app.kafka.avrodemo.schema.CancelEnrolment.Builder clearCustomerId() {
       fieldSetFlags()[0] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'rewardName' field.
+      * Gets the value of the 'programme' field.
       * @return The value.
       */
-    public java.lang.String getRewardName() {
-      return rewardName;
+    public java.lang.String getProgramme() {
+      return programme;
     }
 
 
     /**
-      * Sets the value of the 'rewardName' field.
-      * @param value The value of 'rewardName'.
+      * Sets the value of the 'programme' field.
+      * @param value The value of 'programme'.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.CancelEnrolment.Builder setRewardName(java.lang.String value) {
+    public app.kafka.avrodemo.schema.CancelEnrolment.Builder setProgramme(java.lang.String value) {
       validate(fields()[1], value);
-      this.rewardName = value;
+      this.programme = value;
       fieldSetFlags()[1] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'rewardName' field has been set.
-      * @return True if the 'rewardName' field has been set, false otherwise.
+      * Checks whether the 'programme' field has been set.
+      * @return True if the 'programme' field has been set, false otherwise.
       */
-    public boolean hasRewardName() {
+    public boolean hasProgramme() {
       return fieldSetFlags()[1];
     }
 
 
     /**
-      * Clears the value of the 'rewardName' field.
+      * Clears the value of the 'programme' field.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.CancelEnrolment.Builder clearRewardName() {
-      rewardName = null;
+    public app.kafka.avrodemo.schema.CancelEnrolment.Builder clearProgramme() {
+      programme = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'reasonCode' field.
+      * Gets the value of the 'reason' field.
       * @return The value.
       */
-    public app.kafka.avrodemo.schema.ReasonCode getReasonCode() {
-      return reasonCode;
+    public app.kafka.avrodemo.schema.Reason getReason() {
+      return reason;
     }
 
 
     /**
-      * Sets the value of the 'reasonCode' field.
-      * @param value The value of 'reasonCode'.
+      * Sets the value of the 'reason' field.
+      * @param value The value of 'reason'.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.CancelEnrolment.Builder setReasonCode(app.kafka.avrodemo.schema.ReasonCode value) {
+    public app.kafka.avrodemo.schema.CancelEnrolment.Builder setReason(app.kafka.avrodemo.schema.Reason value) {
       validate(fields()[2], value);
-      this.reasonCode = value;
+      this.reason = value;
       fieldSetFlags()[2] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'reasonCode' field has been set.
-      * @return True if the 'reasonCode' field has been set, false otherwise.
+      * Checks whether the 'reason' field has been set.
+      * @return True if the 'reason' field has been set, false otherwise.
       */
-    public boolean hasReasonCode() {
+    public boolean hasReason() {
       return fieldSetFlags()[2];
     }
 
 
     /**
-      * Clears the value of the 'reasonCode' field.
+      * Clears the value of the 'reason' field.
       * @return This builder.
       */
-    public app.kafka.avrodemo.schema.CancelEnrolment.Builder clearReasonCode() {
-      reasonCode = null;
+    public app.kafka.avrodemo.schema.CancelEnrolment.Builder clearReason() {
+      reason = null;
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -384,9 +384,9 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
     public CancelEnrolment build() {
       try {
         CancelEnrolment record = new CancelEnrolment();
-        record.entityId = fieldSetFlags()[0] ? this.entityId : (java.lang.Integer) defaultValue(fields()[0]);
-        record.rewardName = fieldSetFlags()[1] ? this.rewardName : (java.lang.String) defaultValue(fields()[1]);
-        record.reasonCode = fieldSetFlags()[2] ? this.reasonCode : (app.kafka.avrodemo.schema.ReasonCode) defaultValue(fields()[2]);
+        record.customerId = fieldSetFlags()[0] ? this.customerId : (java.lang.Integer) defaultValue(fields()[0]);
+        record.programme = fieldSetFlags()[1] ? this.programme : (java.lang.String) defaultValue(fields()[1]);
+        record.reason = fieldSetFlags()[2] ? this.reason : (app.kafka.avrodemo.schema.Reason) defaultValue(fields()[2]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -419,16 +419,16 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeInt(this.entityId);
+    out.writeInt(this.customerId);
 
-    out.writeString(this.rewardName);
+    out.writeString(this.programme);
 
-    if (this.reasonCode == null) {
+    if (this.reason == null) {
       out.writeIndex(0);
       out.writeNull();
     } else {
       out.writeIndex(1);
-      out.writeEnum(this.reasonCode.ordinal());
+      out.writeEnum(this.reason.ordinal());
     }
 
   }
@@ -438,34 +438,34 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.entityId = in.readInt();
+      this.customerId = in.readInt();
 
-      this.rewardName = in.readString();
+      this.programme = in.readString();
 
       if (in.readIndex() != 1) {
         in.readNull();
-        this.reasonCode = null;
+        this.reason = null;
       } else {
-        this.reasonCode = app.kafka.avrodemo.schema.ReasonCode.values()[in.readEnum()];
+        this.reason = app.kafka.avrodemo.schema.Reason.values()[in.readEnum()];
       }
 
     } else {
       for (int i = 0; i < 3; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.entityId = in.readInt();
+          this.customerId = in.readInt();
           break;
 
         case 1:
-          this.rewardName = in.readString();
+          this.programme = in.readString();
           break;
 
         case 2:
           if (in.readIndex() != 1) {
             in.readNull();
-            this.reasonCode = null;
+            this.reason = null;
           } else {
-            this.reasonCode = app.kafka.avrodemo.schema.ReasonCode.values()[in.readEnum()];
+            this.reason = app.kafka.avrodemo.schema.Reason.values()[in.readEnum()];
           }
           break;
 

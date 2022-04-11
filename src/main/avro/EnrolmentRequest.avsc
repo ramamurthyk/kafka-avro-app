@@ -11,8 +11,7 @@
             "name": "payload",
             "type": [
                 "app.kafka.avrodemo.schema.CreateEnrolment",
-                "app.kafka.avrodemo.schema.CancelEnrolment",
-                "app.kafka.avrodemo.schema.UpdateEnrolment"
+                "app.kafka.avrodemo.schema.CancelEnrolment"   
             ]
         }
     ]
