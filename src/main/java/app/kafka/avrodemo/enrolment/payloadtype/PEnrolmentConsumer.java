@@ -1,7 +1,13 @@
 package app.kafka.avrodemo.enrolment.payloadtype;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64.Decoder;
 
+import org.apache.avro.io.DatumReader;
+import org.apache.avro.io.DecoderFactory;
+import org.apache.avro.io.JsonDecoder;
+import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.header.Headers;
 import org.springframework.kafka.annotation.KafkaHandler;
@@ -57,13 +63,10 @@ public class PEnrolmentConsumer {
     // Until the specific handlers can be selected and called, process all the
     // events here.
     // This method would anyway be required to receive and acknowledge messages
-    // types which won be processed by this consumer.
+    // types which won't be processed by this consumer.
     @KafkaHandler(isDefault = true)
-    public void processOtherMessages(ConsumerRecord<String, EnrolmentRequest> record) {
+    public void processOtherMessages(ConsumerRecord<String, Object> record) {
         log.info(String.format("processOtherMessages: Received <- key: %s. value: %s", record.key(), record.value()));
         process(record.headers(), record.value());
-
-        log.info(record.value().toString());
-        log.info(record.value().getClass().toString()); // printing: class app.kafka.avrodemo.schema.EnrolmentRequest
     }
 }

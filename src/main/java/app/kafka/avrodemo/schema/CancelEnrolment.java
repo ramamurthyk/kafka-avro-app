@@ -17,7 +17,7 @@ public class CancelEnrolment extends org.apache.avro.specific.SpecificRecordBase
   private static final long serialVersionUID = 1872227268350452900L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CancelEnrolment\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"customerId\",\"type\":\"int\"},{\"name\":\"programme\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"reason\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"Reason\",\"symbols\":[\"NotUsed\",\"EnrolledElseWhere\",\"TooExpensive\",\"PoorCustomerService\"]}]}],\"subject\":\"cancelEnrolment\",\"version\":1}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CancelEnrolment\",\"namespace\":\"app.kafka.avrodemo.schema\",\"fields\":[{\"name\":\"customerId\",\"type\":\"int\"},{\"name\":\"programme\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"reason\",\"type\":[\"null\",{\"type\":\"enum\",\"name\":\"Reason\",\"symbols\":[\"NotUsed\",\"EnrolledElseWhere\",\"TooExpensive\",\"PoorCustomerService\"]}]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
