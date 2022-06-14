@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "4b21489c-c7a9-4aa7-a06c-30f84919915d",
+		"name": "Kafka Avro App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateEnrolment-Uniontype",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 1000,\n    \"programme\": \"Mindfullness\",\n    \"membershipId\": \"M1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/enrolments-uniontype",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"enrolments-uniontype"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateEnrolment-PayloadType",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 1000,\n    \"programme\": \"Mindfullness\",\n    \"membershipId\": \"M1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/enrolments-payloadtype",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"enrolments-payloadtype"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CancelEnrolment-Uniontype",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 1000,\n    \"programme\": \"Mindfullness\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/enrolments-uniontype",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"enrolments-uniontype"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CancelEnrolment-PayloadType",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 1000,\n    \"programme\": \"Mindfullness\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/enrolments-payloadtype",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"enrolments-payloadtype"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
